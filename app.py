@@ -423,7 +423,7 @@ with tap_input:
             user_input_content = st.session_state["user_input_area"]
 
             # 分隔用户输入内容
-            user_inputs = user_input_content.split("+")
+            user_inputs = user_input_content.split(" ")
 
             # 提取用户输入的各项信息
             num_people = user_inputs[0].strip()
