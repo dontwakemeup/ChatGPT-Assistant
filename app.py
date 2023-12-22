@@ -419,33 +419,36 @@ with tab_func:
 with tap_input:
     def input_callback():
         if st.session_state["user_input_area"] != "":
-            # 修改窗口名称
+            # 获取用户输入内容
             user_input_content = st.session_state["user_input_area"]
 
-            # 用户输入字段，使用+号分隔开
+            # 分隔用户输入内容
             user_inputs = user_input_content.split("+")
 
-            # 固定字段
-            fixed_fields = [
-                "个年轻人计划从",
-                "去",
-                "旅游",
-                "天，来回坐高铁，预算在",
-                "元以内。你充当我的资深导游，请为我们提供一个详细的旅行计划，包括建议的住宿和餐厅选择。在制定旅行计划时，需要考虑到景点门票、交通、吃饭等方面的花费，希望你能提供尽可能准确、实用的信息，最后给我一个每日费用总明细。"
-            ]
+            # 提取用户输入的各项信息
+            num_people = user_inputs[0].strip()
+            destination = user_inputs[1].strip()
+            travel_duration = user_inputs[2].strip()
+            budget = user_inputs[3].strip()
 
-            # 合并用户输入和固定字段
-            combined_content = ""
-            for i, field in enumerate(fixed_fields):
-                if i < len(user_inputs):
-                    combined_content += field + user_inputs[i]
-                else:
-                    combined_content += field
+            # 构建ChatGPT模型的输入内容
+            chatgpt_input = (
+                f"{num_people}个年轻人计划从{destination}去{travel_duration}天，来回坐高铁，预算在{budget}元以内。"
+                "你充当我的资深导游，请为我们提供一个详细的旅行计划，包括建议的住宿和餐厅选择。"
+                "在制定旅行计划时，需要考虑到景点门票、交通、吃饭等方面的花费，希望你能提供尽可能准确、实用的信息，最后给我一个每日费用总明细。"
+            )
 
-            # 调用 ChatGPT 模型的输入
-            st.session_state["user_input_content"] = combined_content
-            st.session_state["user_voice_value"] = ""
+            # 修改窗口名称
+            reset_chat_name_fun(destination)
+
+            # 将ChatGPT输入内容传递给模型
+            st.session_state["pre_user_input_content"] = chatgpt_input
+
+            # 重新运行页面
             st.experimental_rerun()
+
+        # ... 其余代码
+
 
     with st.form("input_form", clear_on_submit=True):
         user_input = st.text_area(
