@@ -14,7 +14,7 @@ if "apibase" in st.secrets:
 else:
     openai.api_base = "https://api.openai.com/v1"
 
-st.set_page_config(page_title="ChatGPT Assistant", layout="wide", page_icon="🤖")
+st.set_page_config(page_title="智能旅行机器人", layout="wide", page_icon="🤖")
 # 自定义元素样式
 st.markdown(css_code, unsafe_allow_html=True)
 
@@ -163,7 +163,7 @@ with st.sidebar:
     )
     st.markdown(
         '<a href="https://github.com/PierXuY/ChatGPT-Assistant" target="_blank" rel="ChatGPT-Assistant">'
-        '<img src="https://badgen.net/badge/icon/GitHub?icon=github&amp;label=ChatGPT Assistant" alt="GitHub">'
+        '<img src="https://badgen.net/badge/icon/GitHub?icon=github&amp;label=智能旅行机器人" alt="GitHub">'
         "</a>",
         unsafe_allow_html=True,
     )
@@ -267,7 +267,7 @@ area_gpt_content = st.empty()
 area_error = st.empty()
 
 st.write("\n")
-st.header("ChatGPT Assistant")
+st.header("智能旅行机器人")
 tap_input, tap_context, tap_model, tab_func = st.tabs(
     ["💬 聊天", "🗒️ 预设", "⚙️ 模型", "🛠️ 功能"]
 )
