@@ -1,8 +1,8 @@
 from .set_context import set_context
 
 # 用户名
-user_name = 'User'
-gpt_name = 'ChatGPT'
+user_name = '用户'
+gpt_name = '智能旅行机器人'
 # 头像(svg格式) 来自 https://www.dicebear.com/playground?style=identicon
 user_svg = """
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 5" fill="none" shape-rendering="crispEdges" width="512" height="512"><desc>"Identicon" by "Florian Körner", licensed under "CC0 1.0". / Remix of the original. - Created with dicebear.com</desc><metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:RDF><cc:Work><dc:title>Identicon</dc:title><dc:creator><cc:Agent rdf:about="https://dicebear.com"><dc:title>Florian Körner</dc:title></cc:Agent></dc:creator><dc:source>https://dicebear.com</dc:source><cc:license rdf:resource="https://creativecommons.org/publicdomain/zero/1.0/" /></cc:Work></rdf:RDF></metadata><mask id="viewboxMask"><rect width="5" height="5" rx="0" ry="0" x="0" y="0" fill="#fff" /></mask><g mask="url(#viewboxMask)"><path d="M0 0h1v1H0V0ZM4 0h1v1H4V0ZM3 0H2v1h1V0Z" fill="#00acc1"/><path fill="#00acc1" d="M2 1h1v1H2z"/><path fill="#00acc1" d="M1 2h3v1H1z"/><path fill="#00acc1" d="M2 3h1v1H2z"/><path d="M2 4H1v1h1V4ZM4 4H3v1h1V4Z" fill="#00acc1"/></g></svg>
