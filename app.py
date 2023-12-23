@@ -276,7 +276,7 @@ tap_input, tap_context, tap_model, tab_func = st.tabs(
 with tap_context:
     set_context_list = list(set_context_all.keys())
    
-    context_select_index = set_context_list.index(st.session_state["context_select" + current_chat + "value"])
+    context_select_index = set_context_list.index(st.session_state["context_select" + current_chat ])
    
     st.selectbox(
         label="选择上下文",
