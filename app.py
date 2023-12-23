@@ -275,9 +275,12 @@ tap_input, tap_context, tap_model, tab_func = st.tabs(
 )
 with tap_context:
     set_context_list = list(set_context_all.keys())
-    context_select_index = set_context_list.index(
-        st.session_state["context_select" + current_chat + "value"]
-    )
+    if set_context_list:
+        # 如果有上下文可选，获取选中的上下文索引
+        context_select_index = set_context_list.index(st.session_state["context_select" + current_chat + "value"])
+    else:
+        # 如果没有上下文可选，设置默认索引为 0 或其他值
+        context_select_index = 0  # 或者你可以设置为其他默认值
     st.selectbox(
         label="选择上下文",
         options=set_context_list,
