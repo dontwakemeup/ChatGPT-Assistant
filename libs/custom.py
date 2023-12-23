@@ -23,13 +23,13 @@ initial_content_all = {
         "frequency_penalty": 0.0,
     },
     "contexts": {
-        'context_select': '不设置',
-        'context_input': '',
+        'context_select': '智能旅行机器人',
+        'context_input': 'XX个人计划从XX去XX旅游X天，预算在X元以内。我会按照这个模板发送信息给你，你将充当我的资深导游，请为我提供一个详细的旅行计划，包括具体的住宿和餐厅选择。并且在制定旅行计划时，你需要考虑到景点门票、交通、吃饭等方面的花费，提供尽可能准确、实用的信息，最后给我一个每日费用总明细',
         'context_level': 4
     }
 }
 # 上下文
-set_context_all = {"智能旅行机器人": ""}
+set_context_all = {"智能旅行机器人": "XX个人计划从XX去XX旅游X天，预算在X元以内。我会按照这个模板发送信息给你，你将充当我的资深导游，请为我提供一个详细的旅行计划，包括具体的住宿和餐厅选择。并且在制定旅行计划时，你需要考虑到景点门票、交通、吃饭等方面的花费，提供尽可能准确、实用的信息，最后给我一个每日费用总明细"}
 set_context_all.update(set_context)
 
 # 自定义css、js
