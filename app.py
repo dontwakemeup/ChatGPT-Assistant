@@ -271,7 +271,8 @@ st.write("\n")
 
 st.header("智能旅游机器人")
 tap_input, tap_context, tap_model, tab_func = st.tabs(
-    ["💬 聊天",  "⚙️ 模型", "🛠️ 功能"]
+    ["💬 聊天", "🗒️ 预设", "⚙️ 模型", "🛠️ 功能"],
+    [True, False, True, True]  # 使用 True 或 False 控制每个选项卡的可见性
 )
 
 with tap_context:
