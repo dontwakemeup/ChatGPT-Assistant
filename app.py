@@ -20,6 +20,23 @@ st.markdown(css_code, unsafe_allow_html=True)
 
 if "initial_settings" not in st.session_state:
     # 历史聊天窗口
+    welcome_message = (
+        "您好，我是智能旅游机器人，请问需要为您制定旅游计划吗？"
+        "如果需要的话，请按照以下模板告诉我您的需求："
+        "\"XX个年轻人计划从XX去XX旅游X天，预算在X元以内。\""
+        "我将充当您的资深导游，请为您提供一个详细的旅行计划，包括建议的住宿和餐厅选择。"
+        "在制定旅行计划时，我会需要考虑到景点门票、交通、吃饭等方面的花费，提供尽可能准确、实用的信息，最后给您一个每日费用总明细。"
+    )
+
+    # 添加欢迎消息到聊天历史
+    if not st.session_state["history" + current_chat]:
+        st.session_state["history" + current_chat] = [
+                                                         {"role": "assistant", "content": welcome_message}
+                                                     ] + st.session_state["history" + current_chat]
+    else:
+        st.session_state["history" + current_chat].insert(
+            0, {"role": "assistant", "content": welcome_message}
+        )
     st.session_state["path"] = "history_chats_file"
     st.session_state["history_chats"] = get_history_chats(st.session_state["path"])
     # ss参数初始化
@@ -426,6 +443,25 @@ with tap_input:
             if df_history.empty or len(df_history.query('role!="system"')) == 0:
                 new_name = extract_chars(user_input_content, 18)
                 reset_chat_name_fun(new_name)
+                if "您好，我是智能旅游机器人，请问需要为您制定旅游计划吗？" in user_input_content:
+                    # 用户回应欢迎消息，ChatGPT继续发送模板
+                    welcome_message = (
+                        "您好，我是智能旅游机器人，请问需要为您制定旅游计划吗？"
+                        "如果需要的话，请按照以下模板告诉我您的需求："
+                        "\"XX个年轻人计划从XX去XX旅游X天，预算在X元以内。\""
+                        "我将充当您的资深导游，请为您提供一个详细的旅行计划，包括建议的住宿和餐厅选择。"
+                        "在制定旅行计划时，我会需要考虑到景点门票、交通、吃饭等方面的花费，提供尽可能准确、实用的信息，最后给您一个每日费用总明细。"
+                    )
+
+                    # 添加欢迎消息到聊天历史
+                    st.session_state["history" + current_chat].insert(
+                        0, {"role": "assistant", "content": welcome_message}
+                    )
+
+                    # 重置用户输入，让 ChatGPT 继续发送模板
+                    st.session_state["pre_user_input_content"] = user_input_content
+                    st.session_state["user_input_content"] = ""
+                    st.experimental_rerun()
 
     with st.form("input_form", clear_on_submit=True):
         user_input = st.text_area(
