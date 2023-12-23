@@ -29,7 +29,7 @@ initial_content_all = {
     }
 }
 # 上下文
-set_context_all = {"不设置": ""}
+set_context_all = {"智能旅行机器人": ""}
 set_context_all.update(set_context)
 
 # 自定义css、js
