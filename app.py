@@ -155,18 +155,7 @@ with st.sidebar:
         "选择模型：", index=0, options=["gpt-3.5-turbo", "gpt-4"], key="select_model"
     )
     st.write("\n")
-    st.caption(
-        """
-    - 双击页面可直接定位输入栏
-    - Ctrl + Enter 可快捷提交问题
-    """
-    )
-    st.markdown(
-        '<a href="https://github.com/PierXuY/ChatGPT-Assistant" target="_blank" rel="ChatGPT-Assistant">'
-        '<img src="https://badgen.net/badge/icon/GitHub?icon=github&amp;label=智能旅行机器人" alt="GitHub">'
-        "</a>",
-        unsafe_allow_html=True,
-    )
+   
 
 # 加载数据
 if "history" + current_chat not in st.session_state:
@@ -429,7 +418,7 @@ with tap_input:
 
     with st.form("input_form", clear_on_submit=True):
         user_input = st.text_area(
-            "**输入：**",
+            "**输入（建议输入格式为“XX个人计划从XX去XX旅游XX天，预算在XX元以内”进行咨询）：**",
             key="user_input_area",
             help="内容将以Markdown格式在页面展示，建议遵循相关语言规范，同样有利于GPT正确读取，例如："
             "\n- 代码块写在三个反引号内，并标注语言类型"
